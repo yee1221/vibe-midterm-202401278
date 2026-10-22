@@ -5,9 +5,7 @@
 ## 링크
 
 - GitHub 저장소: [https://github.com/yee1221/vibe-midterm-202401278](https://github.com/yee1221/vibe-midterm-202401278)
-- GitHub Pages: `[배포 URL 미정 — GitHub Pages 배포 후 입력]`
-
-저장소와 배포 URL은 확인되지 않아 임의로 만들지 않았습니다.
+- GitHub Pages: [https://yee1221.github.io/vibe-midterm-202401278/](https://yee1221.github.io/vibe-midterm-202401278/)
 
 ## 실행 방법
 
@@ -49,10 +47,18 @@
 index.html
 css/style.css
 js/app.js
+assets/
+  americano.svg
+  latte.svg
+  vanilla-latte.svg
+  choco-latte.svg
+  lemon-ade.svg
 PRD.md
 AGENTS.md
 PROMPTS.md
 README.md
+.github/workflows/pages.yml
+.gitignore
 ```
 
 ### 제작자 정보
