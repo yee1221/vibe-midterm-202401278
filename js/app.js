@@ -4,12 +4,19 @@
   const STORAGE_KEYS = { menu: 'cornerCafe.menu.v1', orders: 'cornerCafe.orders.v1' };
   const SHOT_PRICE = 500;
   const initialMenu = [
-    { id: 'americano', name: '아메리카노', description: '고소하고 깔끔한 시그니처 블렌드', price: 4000, stock: 12, icon: '☕' },
-    { id: 'latte', name: '카페 라떼', description: '부드러운 우유와 에스프레소', price: 4500, stock: 10, icon: '🥛' },
-    { id: 'vanilla-latte', name: '바닐라 라떼', description: '은은한 바닐라 향을 더한 라떼', price: 5000, stock: 8, icon: '🍦' },
-    { id: 'choco-latte', name: '초코 라떼', description: '진한 초콜릿의 달콤한 한 잔', price: 4800, stock: 7, icon: '🍫' },
-    { id: 'citron-tea', name: '레몬 에이드', description: '상큼하게 기분 전환하는 탄산 음료', price: 4500, stock: 9, icon: '🍋' }
+    { id: 'americano', name: '아메리카노', description: '고소하고 깔끔한 시그니처 블렌드', price: 4000, stock: 12, icon: '☕', image: 'assets/americano.svg', imageAlt: '짙은 에스프레소 컬러의 아메리카노 한 잔' },
+    { id: 'latte', name: '카페 라떼', description: '부드러운 우유와 에스프레소', price: 4500, stock: 10, icon: '🥛', image: 'assets/latte.svg', imageAlt: '하트 라테 아트가 그려진 따뜻한 카페 라떼' },
+    { id: 'vanilla-latte', name: '바닐라 라떼', description: '은은한 바닐라 향을 더한 라떼', price: 5000, stock: 8, icon: '🍦', image: 'assets/vanilla-latte.svg', imageAlt: '얼음과 바닐라 크림이 층을 이룬 아이스 바닐라 라떼' },
+    { id: 'choco-latte', name: '초코 라떼', description: '진한 초콜릿의 달콤한 한 잔', price: 4800, stock: 7, icon: '🍫', image: 'assets/choco-latte.svg', imageAlt: '휘핑크림과 초콜릿 드리즐을 얹은 초코 라떼' },
+    { id: 'citron-tea', name: '레몬 에이드', description: '상큼하게 기분 전환하는 탄산 음료', price: 4500, stock: 9, icon: '🍋', image: 'assets/lemon-ade.svg', imageAlt: '레몬 슬라이스와 민트를 곁들인 레몬 에이드' }
   ];
+  const menuImages = {
+    americano: { src: 'assets/americano.svg', alt: '짙은 에스프레소 컬러의 아메리카노 한 잔' },
+    latte: { src: 'assets/latte.svg', alt: '하트 라테 아트가 그려진 따뜻한 카페 라떼' },
+    'vanilla-latte': { src: 'assets/vanilla-latte.svg', alt: '얼음과 바닐라 크림이 층을 이룬 아이스 바닐라 라떼' },
+    'choco-latte': { src: 'assets/choco-latte.svg', alt: '휘핑크림과 초콜릿 드리즐을 얹은 초코 라떼' },
+    'citron-tea': { src: 'assets/lemon-ade.svg', alt: '레몬 슬라이스와 민트를 곁들인 레몬 에이드' }
+  };
 
   const elements = {
     menu: document.querySelector('#menu-list'), cart: document.querySelector('#cart-items'),
@@ -142,8 +149,10 @@
       const soldOut = item.stock === 0;
       const stockClass = soldOut ? 'sold-out' : item.stock <= 3 ? 'low' : '';
       const stockText = soldOut ? '품절' : `재고 ${item.stock}개`;
+      const image = item.image || menuImages[item.id]?.src || '';
+      const imageAlt = item.imageAlt || menuImages[item.id]?.alt || `${item.name} 음료 이미지`;
       return `<article class="menu-card">
-        <div class="menu-card-top"><span class="drink-icon" aria-hidden="true">${escapeHTML(item.icon || '☕')}</span><span class="stock-badge ${stockClass}">${stockText}</span></div>
+        <div class="menu-card-top"><img class="drink-image" src="${escapeHTML(image)}" alt="${escapeHTML(imageAlt)}" loading="lazy"><span class="stock-badge ${stockClass}">${stockText}</span></div>
         <h3>${escapeHTML(item.name)}</h3><p class="menu-description">${escapeHTML(item.description || '')}</p>
         <fieldset class="option-fieldset"><legend>원하는 옵션을 선택하세요</legend>
           <label class="option-choice"><input type="checkbox" data-option="shot" data-menu-id="${escapeHTML(item.id)}" ${soldOut ? 'disabled' : ''}> 샷 추가 +500원</label>
