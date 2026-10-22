@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f7f3ec">
+    <meta name="description" content="메뉴를 고르고 주문을 접수하는 카페 주문 및 관리자 페이지">
+    <title>모퉁이 카페 | 메뉴 주문</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/app.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="모퉁이 카페 홈">
+        <span class="brand-mark" aria-hidden="true">ㄷ</span>
+        <span><strong>모퉁이 카페</strong><small>COFFEE · GOOD MOMENTS</small></span>
+      </a>
+      <div class="header-note"><span class="open-dot"></span> 오늘도 정성껏 준비합니다</div>
+    </header>
+
+    <main id="top" class="page-shell">
+      <section class="hero" aria-labelledby="page-title">
+        <div>
+          <p class="eyebrow">A LITTLE PAUSE IN YOUR DAY</p>
+          <h1 id="page-title">좋은 하루의 한 모금</h1>
+          <p class="hero-copy">마음에 드는 음료를 고르고, 천천히 즐겨 보세요.</p>
+        </div>
+        <div class="hero-stamp" aria-hidden="true"><span>EST.</span><strong>2024</strong><span>SEOUL · KOREA</span></div>
+      </section>
+
+      <nav class="view-tabs" aria-label="화면 선택" role="tablist">
+        <button class="view-tab is-active" id="customer-tab" type="button" role="tab" aria-selected="true" aria-controls="customer-view" data-view="customer">
+          <span aria-hidden="true">☕</span> 메뉴 주문
+        </button>
+        <button class="view-tab" id="admin-tab" type="button" role="tab" aria-selected="false" aria-controls="admin-view" data-view="admin">
+          <span aria-hidden="true">▤</span> 관리자
+          <span class="tab-count" id="pending-count">0</span>
+        </button>
+      </nav>
+
+      <section id="customer-view" class="view-panel" role="tabpanel" aria-labelledby="customer-tab">
+        <div class="customer-layout">
+          <section class="menu-section" aria-labelledby="menu-title">
+            <div class="section-heading">
+              <div><p class="eyebrow">OUR MENU</p><h2 id="menu-title">오늘의 메뉴</h2></div>
+              <span class="menu-hint">매일 신선하게 준비해요</span>
+            </div>
+            <div class="menu-grid" id="menu-list" aria-live="polite"></div>
+          </section>
+
+          <aside class="cart-panel" aria-labelledby="cart-title">
+            <div class="cart-heading"><div><p class="eyebrow">YOUR SELECTION</p><h2 id="cart-title">주문 바구니</h2></div><span class="cart-count" id="cart-count">0</span></div>
+            <div id="cart-items" class="cart-items" aria-live="polite"></div>
+            <div class="cart-summary">
+              <div class="summary-line"><span>상품 금액</span><span id="subtotal">0원</span></div>
+              <div class="summary-line"><span>옵션 추가 금액</span><span id="option-total">0원</span></div>
+              <div class="summary-total"><span>총 주문 금액</span><strong id="cart-total">0원</strong></div>
+            </div>
+            <button class="button button-primary checkout-button" id="checkout-button" type="button" disabled>주문하기 <span aria-hidden="true">→</span></button>
+            <p class="cart-footnote">주문 후에는 관리자 화면에서 제조 상태를 확인할 수 있어요.</p>
+          </aside>
+        </div>
+      </section>
+
+      <section id="admin-view" class="view-panel" role="tabpanel" aria-labelledby="admin-tab" hidden>
+        <div class="admin-heading"><div><p class="eyebrow">CAFE CONTROL DESK</p><h2>오늘의 운영 현황</h2><p>접수된 주문과 메뉴 재고를 확인하세요.</p></div><div class="admin-date" id="admin-date"></div></div>
+        <section class="admin-section" aria-labelledby="orders-title">
+          <div class="section-heading compact"><div><p class="eyebrow">ORDER QUEUE</p><h3 id="orders-title">주문 현황</h3></div><span class="section-meta" id="order-summary"></span></div>
+          <div id="order-list" class="order-list" aria-live="polite"></div>
+        </section>
+        <section class="admin-section inventory-section" aria-labelledby="inventory-title">
+          <div class="section-heading compact"><div><p class="eyebrow">INVENTORY</p><h3 id="inventory-title">메뉴별 재고</h3></div><span class="section-meta">현재 판매 가능 수량</span></div>
+          <div id="inventory-list" class="inventory-list" aria-live="polite"></div>
+        </section>
+      </section>
+
+      <p id="status-message" class="status-message" role="status" aria-live="polite"></p>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-brand"><span class="brand-mark" aria-hidden="true">ㄷ</span><span><strong>모퉁이 카페</strong><small>GOOD COFFEE, GOOD COMPANY</small></span></div>
+      <div class="student-info"><span>학부/학과 <strong>[학부/학과 입력]</strong></span><span>학번 <strong>202401278</strong></span><span>이름 <strong>[이름 입력]</strong></span></div>
+      <p class="footer-note">본 페이지는 주문 시연을 위한 웹앱입니다. 데이터는 이 브라우저에 저장됩니다.</p>
+    </footer>
+  </body>
+</html>
